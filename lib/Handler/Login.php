@@ -10,7 +10,7 @@ class Login extends BaseHandler
     protected function run(ServerRequestInterface $request, ResponseInterface $response, array $args = null) : ResponseInterface
     {
         $data = $request->getParsedBody();
-        $code = $data['code'] ?? null;
+        $code = $data['code'] ?? '';
 
         try {
             /**
