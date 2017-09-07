@@ -21,7 +21,7 @@ class Submit extends BaseHandler
         $data['recaptcha'] = $this->checkReCaptcha($post);
         $errors            = self::validate($data);
 
-        if ($errors) {
+        if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             return $this->redirect($response, '/');
         }
@@ -54,6 +54,7 @@ class Submit extends BaseHandler
 
     private static function getData(array $post) : array
     {
+        $data = [];
         $form = $post['data'] ?? [];
         if (!is_array($form)) {
             $form = [];
