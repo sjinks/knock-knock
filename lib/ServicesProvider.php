@@ -29,7 +29,7 @@ class ServicesProvider
         };
 
         $container['notAllowedHandler'] = function (ContainerInterface $container) {
-            return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
+            return function (ServerRequestInterface $request, ResponseInterface $response) {
                 return $response->withHeader('Location', '/')->withStatus(302);
             };
         };
@@ -58,7 +58,7 @@ class ServicesProvider
     public static function reCaptcha(ContainerInterface $container) : ReCaptcha
     {
         $settings  = $container->get('settings');
-        $rc        = $container['settings']['recaptcha'];
+        $rc        = $settings['recaptcha'];
         $recaptcha = new ReCaptcha($rc['secret']);
         return $recaptcha;
     }
