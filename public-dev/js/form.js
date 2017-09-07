@@ -1,3 +1,4 @@
+/** global: AccountKit, ak_settings */
 jQuery(function($) {
 	function heartbeat()
 	{
