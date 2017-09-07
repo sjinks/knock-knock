@@ -1,3 +1,10 @@
 composer.lock
 /public/
 /vendor/
+/config/config.php
+
+/.buildpath
+/.project
+/.settings/
+/.tmp/
+/node_modules/
