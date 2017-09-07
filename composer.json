@@ -1,0 +1,10 @@
+{
+    "require": {
+        "slim/slim": "^3.8",
+        "slim/php-view": "^2.2",
+        "wildwolf/accountkit": "^1.0",
+        "phpmailer/phpmailer": "^5.2",
+        "google/recaptcha": "^1.1",
+        "cloudflare/cf-ip-rewrite": "^1.0"
+    }
+}
