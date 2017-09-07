@@ -28,7 +28,7 @@ class ServicesProvider
             };
         };
 
-        $container['notAllowedHandler'] = function (ContainerInterface $container) {
+        $container['notAllowedHandler'] = function (/** @scrutinizer ignore-unused */ ContainerInterface $container) {
             return function (ServerRequestInterface $request, ResponseInterface $response) {
                 return $response->withHeader('Location', '/')->withStatus(302);
             };
