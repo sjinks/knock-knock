@@ -73,14 +73,14 @@ class ServicesProvider
         $pm       = $settings['mailer'];
 
         $mailer           = new \PHPMailer();
-        $mailer->From     = $settings['from'];
+        $mailer->From     = $pm['from'];
         $mailer->FromName = '';
         $mailer->CharSet  = 'utf-8';
-        $mailer->addAddress($settings['to']);
+        $mailer->addAddress($pm['to']);
 
         if ($settings['host']) {
             $mailer->isSMTP();
-            $mailer->Host = $settings['host'];
+            $mailer->Host = $pm['host'];
         }
 
         return $mailer;
