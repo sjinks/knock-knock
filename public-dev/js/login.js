@@ -1,3 +1,4 @@
+/** global: AccountKit, AccountKit_OnInteractive, ak_settings */
 AccountKit_OnInteractive = function() {
 	AccountKit.init(ak_settings);
 };
