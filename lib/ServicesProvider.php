@@ -12,6 +12,12 @@ class ServicesProvider
 {
     public function register(\ArrayAccess $container)
     {
+        $this->registerServices($container);
+        $this->registerHandlers($container);
+    }
+
+    private function registerServices(\ArrayAccess $container)
+    {
         $container['view'] = new PhpRenderer(__DIR__ . '/../templates');
 
         $container['accountkit'] = function (ContainerInterface $container) {
@@ -25,7 +31,10 @@ class ServicesProvider
         $container['mailer']    = function (ContainerInterface $container) {
             return self::phpMailer($container);
         };
+    }
 
+    private function registerHandlers(\ArrayAccess $container)
+    {
         $container['notFoundHandler'] = function (ContainerInterface $container) {
             return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
                 return $container->get('view')->render($response, '404.phtml')->withStatus(404);
