@@ -22,6 +22,10 @@ class ServicesProvider
             return self::reCaptcha($container);
         };
 
+        $container['mailer']    = function (ContainerInterface $container) {
+            return self::phpMailer($container);
+        };
+
         $container['notFoundHandler'] = function (ContainerInterface $container) {
             return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
                 return $container->get('view')->render($response, '404.phtml')->withStatus(404);
@@ -61,5 +65,24 @@ class ServicesProvider
         $rc        = $settings['recaptcha'];
         $recaptcha = new ReCaptcha($rc['secret']);
         return $recaptcha;
+    }
+
+    public static function phpMailer(ContainerInterface $container) : \PHPMailer
+    {
+        $settings = $container->get('settings');
+        $pm       = $settings['mailer'];
+
+        $mailer           = new \PHPMailer();
+        $mailer->From     = $settings['from'];
+        $mailer->FromName = '';
+        $mailer->CharSet  = 'utf-8';
+        $mailer->addAddress($settings['to']);
+
+        if ($settings['host']) {
+            $mailer->isSMTP();
+            $mailer->Host = $settings['host'];
+        }
+
+        return $mailer;
     }
 }

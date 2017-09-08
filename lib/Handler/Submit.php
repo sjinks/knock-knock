@@ -137,27 +137,18 @@ class Submit extends BaseHandler
 
     private function sendEmail(ServerRequestInterface $request, string $message)
     {
-        $settings = $this->settings()['mailer'];
+        $container = $this->container();
+        $mailer    = $container->get('mailer');
 
-        $mailer = new \PHPMailer();
-        $mailer->From = $settings['from'];
         $mailer->addReplyTo($_SESSION['email']);
-        $mailer->addAddress($settings['to']);
-        $mailer->FromName = '';
-        $mailer->Subject  = 'Запрос на внесение в Чистилище';
-        $mailer->Body     = $message;
-        $mailer->CharSet  = 'utf-8';
+        $mailer->Subject = 'Запрос на внесение в Чистилище';
+        $mailer->Body    = $message;
 
         $files = $request->getUploadedFiles();
         foreach ($files['files'] as $f) {
             if (!$f->getError()) {
                 $mailer->addAttachment($f->file, basename($f->getClientFilename()), 'base64', $f->getClientMediaType());
             }
-        }
-
-        if ($settings['host']) {
-            $mailer->isSMTP();
-            $mailer->Host = $settings['host'];
         }
 
         $mailer->send();
