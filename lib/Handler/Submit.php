@@ -117,19 +117,19 @@ class Submit extends BaseHandler
         $ip       = $env->get('REMOTE_ADDR');
         $message  = '';
 
-        if ($data['present']) $message .= "Обновление информации: {$data['url']}\n";
+        if ($data['present']) $message .= "Обновление информации: {$data['url']}\n\n";
 
-        $message .= "ФИО: {$data['name']}\n";
-        $message .= "Страна: {$data['country']}\n";
+        $message .= "ФИО: {$data['name']}\n\n";
+        $message .= "Страна: {$data['country']}\n\n";
 
-        if ($data['address']) $message .= "Адрес: {$data['address']}\n";
-        if ($data['phone'])   $message .= "Телефон: {$data['phone']}\n";
+        if ($data['address']) $message .= "Адрес: {$data['address']}\n\n";
+        if ($data['phone'])   $message .= "Телефон: {$data['phone']}\n\n";
 
         $message .= "Описание:\n{$data['desc']}\n\n";
 
         if ($data['comment']) $message .= "Примечание: {$data['comment']}\n";
 
-        $message .= "-----\nОтправитель: {$_SESSION['email']}\n";
+        $message .= "\n\n\n\n\n\n\n\n\n\n-----\nОтправитель: {$_SESSION['email']}\n";
         $message .= "IP: {$ip}\n";
 
         return $message;
