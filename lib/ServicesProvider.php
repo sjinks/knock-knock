@@ -84,12 +84,20 @@ class ServicesProvider
         $mailer           = new \PHPMailer();
         $mailer->From     = $pm['from'];
         $mailer->FromName = '';
+        $mailer->Sender   = $pm['sender'] ?? $pm['from'];
         $mailer->CharSet  = 'utf-8';
         $mailer->addAddress($pm['to']);
 
-        if ($settings['host']) {
+        if ($pm['host']) {
             $mailer->isSMTP();
             $mailer->Host = $pm['host'];
+            $mailer->Port = $pm['port'] ?? 25;
+            $mailer->SMTPSecure = $pm['secure'] ?? '';
+            $mailer->Helo = $pm['helo'] ?? '';
+
+            $mailer->SMTPAuth = $pm['smtpauth'];
+            $mailer->Username = $pm['username'];
+            $mailer->Password = $pm['password'];
         }
 
         return $mailer;
