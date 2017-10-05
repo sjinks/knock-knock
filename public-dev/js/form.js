@@ -10,4 +10,6 @@ jQuery(function($) {
 	$('#present, #absent').change(function() {
 		$('#url').attr('disabled', !$('#present').is(':checked'));
 	});
+
+	$("#date").datepicker({ dateFormat: "dd.mm.yy" });
 });

@@ -19,10 +19,15 @@ class Start extends BaseHandler
             $response,
             'form.phtml',
             [
-                'footer_js' => ['https://www.google.com/recaptcha/api.js', '/js/form.js'],
-                'recaptcha' => $settings['recaptcha'],
-                'data'      => self::sessionData(),
-                'errors'    => self::sessionErrors(),
+                'header_css' => ['https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css'],
+                'footer_js'  => [
+                    'https://www.google.com/recaptcha/api.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+                    '/js/form.js',
+                ],
+                'recaptcha'  => $settings['recaptcha'],
+                'data'       => self::sessionData(),
+                'errors'     => self::sessionErrors(),
             ]
         );
     }

@@ -61,6 +61,7 @@ class Submit extends BaseHandler
         }
 
         $data['name']     = $form['name']    ?? '';
+        $data['dob']      = $form['dob']     ?? '';
         $data['country']  = $form['country'] ?? '';
         $data['address']  = $form['address'] ?? '';
         $data['phone']    = $form['phone']   ?? '';
@@ -122,6 +123,7 @@ class Submit extends BaseHandler
         $message .= "ФИО: {$data['name']}\n\n";
         $message .= "Страна: {$data['country']}\n\n";
 
+        if ($data['dob'])     $message .= "Дата рождения: {$data['dob']}\n\n";
         if ($data['address']) $message .= "Адрес: {$data['address']}\n\n";
         if ($data['phone'])   $message .= "Телефон: {$data['phone']}\n\n";
 
