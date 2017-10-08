@@ -6,6 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha256-rr9hHBQ43H7HSOmmNkxzQGazS/Khx+L8ZRHteEY1tQ4=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous"/>
+<?php if (!empty($header_css) && is_array($header_css)) : ?>
+<?php foreach ($header_css as $src) : ?>
+	<link rel="stylesheet" href="<?=$src;?>"/>
+<?php endforeach; ?>
+<?php endif; ?>
 	<link rel="stylesheet" href="/css/style.css?v=4"/>
 	<link rel="icon" href="/img/icon32.png" sizes="32x32"/>
 	<link rel="icon" href="/img/icon192.png" sizes="192x192"/>
