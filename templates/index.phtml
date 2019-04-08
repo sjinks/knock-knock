@@ -1,13 +1,15 @@
 <?php require 'header.inc'; ?>
-	<form action="/login" method="get" id="form">
-		<div class="form-check mb-3">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" id="tos" required="required">
-				Я внимательно прочитал(а) <a href="https://myrotvorets.center/contacts/" target="_blank">О взаимодействии и сотрудничестве с Центром «МИРОТВОРЕЦ»</a>
-			</label>
-		</div>
-		<button class="btn btn-primary" id="submit">Начать</button>
-	</form>
+	<main class="container flex-grow-1 py-3">
+		<form action="/login" method="get" id="form">
+			<div class="form-check mb-3">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input" id="tos" required="required">
+					Я внимательно прочитал(а) <a href="https://myrotvorets.center/contacts/" target="_blank">О взаимодействии и сотрудничестве с Центром «МИРОТВОРЕЦ»</a>
+				</label>
+			</div>
+			<button class="btn btn-primary" id="submit">Начать</button>
+		</form>
+	</main>
 <script>
 var auth = {
 	'redirectUrl'  : '<?=$auth0['verify']?>',

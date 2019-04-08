@@ -54,5 +54,3 @@
 				Для нормальної роботи сайту потрібно JavaScript.
 			</div>
 		</noscript>
-
-		<main class="container flex-grow-1 py-3">
