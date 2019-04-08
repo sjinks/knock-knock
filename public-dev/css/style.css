@@ -2,35 +2,36 @@ html, body {
 	background: #E9EBEE;
 }
 
+html, body, #container {
+	height: 100vh;
+}
+
 #header {
+	background: #3B5998 url(https://psb4ukr.natocdn.net/logos/psbopaque.png) no-repeat center / contain;
+}
+
+#nav, #footer {
 	background-color: #3B5998;
+}
+
+nav a, #footer a {
+	color: #F9E038;
 }
 
 #header h1 {
 	font: 700 24px Georgia, "Times New Roman", Times, serif;
 	text-shadow: 0 1px 1px #000;
 	color: #F9E038;
-	text-align: center;
 }
 
 #header h2 {
 	font-weight: 700;
-	font-size: 12px;
+	font-size: 18px;
 	color: #F9E038;
-	text-align: center;
-}
-
-#nav {
-	margin-left: -15px;
-	margin-right: -15px;
 }
 
 .required:after {
 	content: " *";
 	font-weight: bold;
 	color: red;
-}
-
-main {
-	margin-bottom: 5rem;
 }
