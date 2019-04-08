@@ -143,7 +143,7 @@ class Submit extends BaseHandler
         $mailer    = $container->get('mailer');
 
         $mailer->addReplyTo($_SESSION['email']);
-        $mailer->Subject = 'Запрос на внесение в Чистилище';
+        $mailer->Subject = 'В Чистилище';
         $mailer->Body    = $message;
 
         $files = $request->getUploadedFiles();

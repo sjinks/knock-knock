@@ -6,11 +6,13 @@ use Slim\App;
 use Slim\Container;
 use WildWolf\Handler\Index;
 use WildWolf\Handler\Login;
+use WildWolf\Handler\Logout;
 use WildWolf\Handler\Heartbeat;
 use WildWolf\Handler\Start;
 use WildWolf\Handler\Success;
-use WildWolf\Middleware\CloudflareIpRewrite;
 use WildWolf\Handler\Submit;
+use WildWolf\Handler\Verify;
+use WildWolf\Middleware\CloudflareIpRewrite;
 
 class Application extends App
 {
@@ -38,7 +40,9 @@ class Application extends App
         $this->get('/',           new Index($this));
         $this->get('/start',      new Start($this));
         $this->get('/success',    new Success($this));
-        $this->post('/login',     new Login($this));
+        $this->get('/login',      new Login($this));
+        $this->get('/verify',     new Verify($this));
+        $this->get('/logout',     new Logout($this));
         $this->post('/heartbeat', new Heartbeat($this));
         $this->post('/submit',    new Submit($this));
     }

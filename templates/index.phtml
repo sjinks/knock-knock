@@ -1,30 +1,18 @@
 <?php require 'header.inc'; ?>
-	<main>
-		<div class="form-group">
-			<label for="email">Ваш e-mail</label>
-			<input type="email" class="form-control" required="required" id="email"/>
-		</div>
-		<div class="form-check">
+	<form action="/login" method="get" id="form">
+		<div class="form-check mb-3">
 			<label class="form-check-label">
 				<input type="checkbox" class="form-check-input" id="tos" required="required">
 				Я внимательно прочитал(а) <a href="https://myrotvorets.center/contacts/" target="_blank">О взаимодействии и сотрудничестве с Центром «МИРОТВОРЕЦ»</a>
 			</label>
 		</div>
 		<button class="btn btn-primary" id="submit">Начать</button>
-
-		<form id="jsform" action="/login" method="post">
-			<input type="hidden" id="status" name="status"/>
-			<input type="hidden" id="code" name="code"/>
-			<input type="hidden" id="state" name="state"/>
-		</form>
-	</main>
-
+	</form>
 <script>
-var ak_settings = {
-	appId: "<?=$accountkit['appid'];?>",
-	state: "<?=mt_rand(100000, 999999)?>",
-	version: "<?=$accountkit['apiver'];?>",
-	fbAppEventsEnabled: true,
+var auth = {
+	'redirectUrl'  : '<?=$auth0['verify']?>',
+	'responseType' : 'code'
 };
+var settings = ['<?=$auth0['clientid'];?>', '<?=$auth0['domain'];?>'];
 </script>
 <?php require 'footer.inc'; ?>

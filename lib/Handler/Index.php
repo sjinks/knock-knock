@@ -14,14 +14,14 @@ class Index extends BaseHandler
         }
 
         $settings = $this->settings();
+        $as       = $settings['auth0'];
 
         return $this->view()->render(
             $response,
             'index.phtml',
             [
-                'accountkit' => $settings['accountkit'],
-                'header_js'  => ['https://sdk.accountkit.com/ru_RU/sdk.js'],
-                'footer_js'  => ['/js/login.js'],
+                'footer_js' => ['https://cdn.auth0.com/js/lock/11.6.1/lock.min.js', '/js/login.js?v=3'],
+                'auth0'     => $as,
             ]
         );
     }

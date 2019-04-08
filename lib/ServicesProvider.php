@@ -2,6 +2,7 @@
 
 namespace WildWolf;
 
+use Auth0\SDK\Auth0;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -20,8 +21,8 @@ class ServicesProvider
     {
         $container['view'] = new PhpRenderer(__DIR__ . '/../templates');
 
-        $container['accountkit'] = function (ContainerInterface $container) {
-            return self::accountKit($container);
+        $container['auth0'] = function (ContainerInterface $container) {
+            return self::auth0($container);
         };
 
         $container['recaptcha'] = function (ContainerInterface $container) {
@@ -58,14 +59,24 @@ class ServicesProvider
         $container['errorHandler']    = $error_handler;
     }
 
-    public static function accountKit(ContainerInterface $container) : AccountKit
+    public static function auth0(ContainerInterface $container) : Auth0
     {
         $settings = $container->get('settings');
-        $ak       = $settings['accountkit'];
+        $as       = $settings['auth0'];
 
-        $accountkit = new AccountKit($ak['appid'], $ak['secret']);
-        $accountkit->setApiVersion($ak['apiver']);
-        return $accountkit;
+        $auth0    = new Auth0([
+            'domain'               => $as['domain'],
+            'client_id'             => $as['clientid'],
+            'client_secret'         => $as['clientsecret'],
+            'redirect_uri'          => $as['login'],
+            'audience'              => 'https://' . $as['domain'] . '/userinfo',
+            'scope'                 => 'openid profile email',
+            'persist_id_token'      => true,
+            'persist_access_token'  => true,
+            'persist_refresh_token' => true,
+        ]);
+
+        return $auth0;
     }
 
     public static function reCaptcha(ContainerInterface $container) : ReCaptcha

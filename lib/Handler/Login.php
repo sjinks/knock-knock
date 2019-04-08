@@ -9,22 +9,22 @@ class Login extends BaseHandler
 {
     protected function run(ServerRequestInterface $request, ResponseInterface $response, array $args = null) : ResponseInterface
     {
-        $data = $request->getParsedBody();
-        $code = $data['code'] ?? '';
-
-        try {
-            /**
-             * @var \WildWolf\AccountKit $kit
-             */
-            $kit = $this->container()->get('accountkit');
-            $d1  = $kit->getAccessToken($code);
-            $d2  = $kit->validateAccessToken($d1->access_token);
-
-            $_SESSION['email'] = $d2->email->address;
-            return $this->redirect($response, '/start');
+        /**
+         * @var \Auth0\SDK\Auth0
+         */
+        $auth0  = $this->container()->get('auth0');
+        $method = $request->getMethod();
+        $params = $request->getQueryParams();
+        if (!empty($params['code'])) {
+            try {
+                $userInfo = $auth0->getUser();
+                $_SESSION['email'] = $userInfo['email'] ?? $userInfo['name'];
+                return $this->redirect($response, '/start');
+            }
+            catch (\Exception $e) {
+            }
         }
-        catch (\Exception $e) {
-            return $this->view()->render($response, 'loginfailed.phtml');
-        }
+        // return $this->view()->render($response, 'loginfailed.phtml');
+        $auth0->login();
     }
 }

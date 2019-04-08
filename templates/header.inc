@@ -4,17 +4,16 @@
 	<meta charset="utf-8"/>
 	<title>Миротворец</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha256-rr9hHBQ43H7HSOmmNkxzQGazS/Khx+L8ZRHteEY1tQ4=" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 <?php if (!empty($header_css) && is_array($header_css)) : ?>
 <?php foreach ($header_css as $src) : ?>
 	<link rel="stylesheet" href="<?=$src;?>"/>
 <?php endforeach; ?>
 <?php endif; ?>
-	<link rel="stylesheet" href="/css/style.css?v=4"/>
+	<link rel="stylesheet" href="/css/style.css?v=5"/>
 	<link rel="icon" href="/img/icon32.png" sizes="32x32"/>
 	<link rel="icon" href="/img/icon192.png" sizes="192x192"/>
-	<link rel="apple-touch-icon-precomposed" href="/img/icon180.png"/>
+	<link rel="apple-touch-icon" href="/img/icon180.png"/>
 	<meta name="msapplication-TileImage" content="/img/icon270.png"/>
 <?php if (!empty($header_js) && is_array($header_js)) : ?>
 <?php foreach ($header_js as $src) : ?>

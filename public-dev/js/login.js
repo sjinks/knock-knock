@@ -1,27 +1,19 @@
-/** global: AccountKit, AccountKit_OnInteractive, ak_settings */
-AccountKit_OnInteractive = function() {
-	AccountKit.init(ak_settings);
-};
+function login()
+{
+	var lock = new Auth0LockPasswordless(settings[0], settings[1], { passwordlessMethod: "link", auth: auth });
+	lock.show();
+}
 
-jQuery(
-	function($)
-	{
-		function loginCallback(response)
-		{
-			var status = response.status;
-			var code   = typeof response.code !== 'undefined'  ? response.code  : '';
-			var state  = typeof response.state !== 'undefined' ? response.state : '';
-			$('#status').val(status);
-			$('#code').val(code);
-			$('#state').val(state);
-			$('#jsform').submit();
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('form').addEventListener('submit', function(e) {
+		e.preventDefault();
+		try {
+			login();
+		}
+		catch (e) {
+			console && console.log(e);
 		}
 
-		$('#submit').click(
-			function()
-			{
-				AccountKit.login('EMAIL', { 'emailAddress' : jQuery('#email').val() }, loginCallback);
-			}
-		);
-	}
-);
+		return false;
+	});
+});

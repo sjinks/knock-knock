@@ -35,7 +35,7 @@ class Start extends BaseHandler
     private static function sessionData() : array
     {
         static $empty = [
-            'name' => '', 'country' => '', 'address' => '', 'phone' => '', 'desc' => '', 'url' => '', 'present' => '', 'comment' => ''
+            'name' => '', 'country' => '', 'address' => '', 'phone' => '', 'desc' => '', 'url' => '', 'present' => '', 'comment' => '', 'dob' => '',
         ];
 
         $result = (!empty($_SESSION['data'])) ? $_SESSION['data'] : $empty;
