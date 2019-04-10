@@ -32,8 +32,8 @@
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav mr-auto">
+			<div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+				<ul class="navbar-nav">
 					<li class="nav-item"><a href="/" class="nav-link">Главная</a></li>
 					<li class="nav-item"><a href="https://myrotvorets.center/" class="nav-link">Миротворец</a></li>
 					<li class="nav-item"><a href="https://myrotvorets.center/criminals/" class="nav-link">Чистилище</a></li>

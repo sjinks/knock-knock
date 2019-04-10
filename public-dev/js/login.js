@@ -4,7 +4,12 @@ function login()
 	lock.show();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function DOMReady(callback)
+{
+	document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', callback) : callback();
+}
+
+DOMReady(function() {
 	document.getElementById('form').addEventListener('submit', function(e) {
 		e.preventDefault();
 		try {

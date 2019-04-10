@@ -1,11 +1,8 @@
 <?php
-
 namespace WildWolf\Handler;
 
-use Psr\Http\Message\ServerRequestInterface as ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface as ResponseInterface;
-use Slim\Http\Environment;
-use ReCaptcha\ReCaptcha;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class Submit extends BaseHandler
 {
@@ -37,12 +34,12 @@ class Submit extends BaseHandler
         $container = $this->container();
 
         /**
-         * @var ReCaptcha $recaptcha
+         * @var \ReCaptcha\ReCaptcha $recaptcha
          */
         $recaptcha = $container->get('recaptcha');
 
         /**
-         * @var Environment $env
+         * @var \Slim\Http\Environment $env
          */
         $env       = $container->get('environment');
 
@@ -73,6 +70,10 @@ class Submit extends BaseHandler
 
         if ($data['present'] !== '') {
             $data['present'] = (int)$data['present'];
+        }
+
+        if ($data['dob']) {
+            $data['dob'] = date('d.m.Y', strtotime($data['dob']));
         }
 
         return $data;
@@ -112,7 +113,7 @@ class Submit extends BaseHandler
     private function buildMessage(array $data) : string
     {
         /**
-         * @var Environment $env
+         * @var \Slim\Http\Environment $env
          */
         $env      = $this->container()->get('environment');
         $ip       = $env->get('REMOTE_ADDR');

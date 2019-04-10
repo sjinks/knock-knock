@@ -1,9 +1,8 @@
 <?php
-
 namespace WildWolf\Handler;
 
-use Psr\Http\Message\ServerRequestInterface as ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface as ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class Login extends BaseHandler
 {
@@ -13,7 +12,6 @@ class Login extends BaseHandler
          * @var \Auth0\SDK\Auth0
          */
         $auth0  = $this->container()->get('auth0');
-        $method = $request->getMethod();
         $params = $request->getQueryParams();
         if (!empty($params['code'])) {
             try {

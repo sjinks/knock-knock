@@ -20,7 +20,7 @@ class Index extends BaseHandler
             $response,
             'index.phtml',
             [
-                'footer_js' => ['https://cdn.auth0.com/js/lock/11.6.1/lock.min.js', '/js/login.js?v=3'],
+                'footer_js' => ['https://cdn.auth0.com/js/lock/11.14.1/lock.min.js', '/js/login.js?v=4'],
                 'auth0'     => $as,
             ]
         );

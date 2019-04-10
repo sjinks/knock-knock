@@ -19,11 +19,9 @@ class Start extends BaseHandler
             $response,
             'form.phtml',
             [
-                'header_css' => ['https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css'],
                 'footer_js'  => [
                     'https://www.google.com/recaptcha/api.js?hl=ru',
-                    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
-                    '/js/form.js?4',
+                    '/js/form.js?5',
                 ],
                 'recaptcha'  => $settings['recaptcha'],
                 'data'       => self::sessionData(),
